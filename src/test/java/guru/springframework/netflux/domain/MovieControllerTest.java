@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
+
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,10 +30,12 @@ class MovieControllerTest {
           final  String id = firstMovie.getId();
 
 
-          webTestClient.get().uri("/movies/"+firstMovie.getId()+"/events")
+            webTestClient.get().uri("/movies/"+firstMovie.getId()+"/events")
                    .accept(MediaType.TEXT_EVENT_STREAM)
                    .exchange().returnResult(MovieEvent.class).getResponseBody().take(2)
-                    .subscribe( movies -> { movies.getMovieId().equals(id); countDownLatch.countDown();} );
+                  .subscribe( movies -> { movies.getMovieId().equals(id); countDownLatch.countDown();} );
+
+
 
           countDownLatch.await();
           assertThat(countDownLatch.getCount()).isEqualTo(0);
