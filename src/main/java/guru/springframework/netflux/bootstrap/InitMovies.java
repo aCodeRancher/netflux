@@ -4,6 +4,7 @@ import guru.springframework.netflux.domain.Movie;
 import guru.springframework.netflux.repositories.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 
@@ -12,6 +13,7 @@ import reactor.core.publisher.Flux;
  */
 @RequiredArgsConstructor
 @Component
+@Profile("!test")
 public class InitMovies implements CommandLineRunner {
     private final MovieRepository movieRepository;
 
