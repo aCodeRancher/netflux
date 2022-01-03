@@ -1,11 +1,13 @@
 package guru.springframework.netflux.domain;
 
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -19,7 +21,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest//(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
+
 public class MovieControllerTest1 {
 
     public static final String BASE_URL = "http://localhost:8080";
