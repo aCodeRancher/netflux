@@ -22,9 +22,9 @@ public class InitMovies implements CommandLineRunner {
                         Flux.just("Silence of the Lambdas", "AEon Flux", "Enter the Mono<Void>", "The Fluxxinator",
                                 "Back to the Future", "Meet the Fluxes", "Lord of the Fluxes")
                         .map(Movie::new)
-                        .flatMap(movieRepository::save)
-                ).subscribe(null, null, () -> {
-                    movieRepository.findAll().subscribe(System.out::println);
-        });
+                        .flatMap(movieRepository::save))
+                        .switchMap( n -> movieRepository.findAll())
+                        .subscribe( System.out::println);
+
     }
 }
